@@ -1,50 +1,34 @@
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpRequestService {
-  setHeaders(){
-    const headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
-  let options = {
-    headers: headers
-    // headers: new HttpHeaders({ 'Content-Type': 'application/json;application/x-www-form-urlencodeed; charset=utf-8' })
+  baseUrl = 'http://localhost:8080';
+  private token: string;
+  setToken(token: string): void {
+    this.token = token;
   }
-  return options;
+  getToken(): string {
+    return this.token;
+  }
+  setHeaders() {
+    const headers = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json');
+    let options = {
+      headers: headers
+    }
+    return options;
   }
 
   constructor(private httpClient: HttpClient) { }
 
-  httpPost(reqUrl : string, repBody, comp, flag) {
-    this.httpClient.post(reqUrl, repBody, this.setHeaders())
-      .subscribe(val => {
-        console.log("post success", val);
-        if(val['success']){
-          comp.postOk(val, flag);
-        }else{
-          comp.postError(val, flag);
-        }
-      },
-      error => {
-        console.log("post error", error);
-        comp.postError(error, flag);
-      })
+  httpPost(reqUrl: string, repBody): Observable<any> {
+    return this.httpClient.post(this.baseUrl + reqUrl, repBody, this.setHeaders());
   }
 
-  httpGet(reqUrl: string, comp, flag){
-    this.httpClient.get(reqUrl, this.setHeaders())
-    .subscribe(val => {
-      console.log("get success", val);
-      if(val['success']){
-        comp.getOk(val, flag);
-      }else{
-        comp.getError(val, flag);
-      }
-    }, 
-    error =>{
-      console.log("get error", error);
-      comp.getError(error, flag);
-    })
+  httpGet(reqUrl: string): Observable<any> {
+    return this.httpClient.get(this.baseUrl + reqUrl, this.setHeaders());
   }
 }

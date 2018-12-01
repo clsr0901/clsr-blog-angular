@@ -9,6 +9,9 @@ import {
 } from '@angular/forms';
 import {User} from "../entity/User";
 import { from } from 'rxjs';
+import { subscribeOn, catchError } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +19,7 @@ import { from } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
-  private user: User = new User("admin", "root");
+  private user: User = new User();
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -27,14 +30,19 @@ export class LoginComponent implements OnInit {
     let password = this.validateForm.controls.password.value;
     let username = this.validateForm.controls.userName.value;
     if (password != null && password != "" && username != null && username != "") {
-      console.log("login");
-      this.httpRequestService.httpPost("http://localhost:8080/test",this.user, this, "flag")
+      this.user.password = password;
+      this.user.username = username;
+      this.httpRequestService.httpPost("/login/in",this.user).subscribe(res => {
+        this.httpRequestService.setToken(res.token);
+        this.router.navigateByUrl("/home");
+      });
     }
 
   }
 
 
-  constructor(private fb: FormBuilder, private httpRequestService: HttpRequestService) {
+  constructor(private fb: FormBuilder, private httpRequestService: HttpRequestService,
+     private router: Router) {
   }
 
   ngOnInit(): void {
@@ -43,21 +51,5 @@ export class LoginComponent implements OnInit {
       password: [null, [Validators.required]],
       remember: [true]
     });
-  }
-
-  getOk(val, flag): void {
-    console.log(val, flag);
-  }
-
-  getError(val, flag): void {
-    console.log(val, flag);
-  }
-
-  postOk(val, flag): void {
-    console.log(val, flag);
-  }
-
-  postError(val, flag): void {
-    console.log(val, flag);
   }
 }
