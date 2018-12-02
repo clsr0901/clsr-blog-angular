@@ -18,13 +18,15 @@ export class EditComponent implements OnInit {
 
   markdown: string;
   editable: boolean = true;
+  isVisibleMiddle: boolean = false;
   private blog: Blog = new Blog();
+  private user: User;
 
   constructor(private markdownService: MarkdownService, private httpService: HttpRequestService, 
     private message: NzMessageService,private router: Router) { }
 
   ngOnInit() {
-    
+    this.user = this.httpService.getUser();
   }
 
   save(): void {
@@ -32,13 +34,26 @@ export class EditComponent implements OnInit {
       this.message.error("请先编辑博客内容");
       return;
     }
-    this.blog.userId = this.httpService.getUser().id;
+    this.isVisibleMiddle = true;
+   
+  }
+  handleOkMiddle(): void{
+    if (!this.blog.title || this.blog.title.length < 1) {
+      this.message.error("请输入博客标题");
+      return;
+    }
+    this.blog.userId = this.user.id;
     this.httpService.httpPost("/blog/save", this.blog).subscribe(res => {
       console.log("blog", res)
+      this.isVisibleMiddle = false;
       this.router.navigateByUrl("/home");
+      
     }, err =>{
         
     });
+  }
+  handleCancelMiddle(): void{
+    this.isVisibleMiddle = false;
   }
 
   edit(): void {

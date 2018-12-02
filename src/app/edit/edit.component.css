@@ -49,3 +49,16 @@
     right:20px;
     top: 10px;
 }
+
+
+  :host ::ng-deep .long-div-inner {
+    height: 1500px;
+  }
+
+  :host ::ng-deep .long-div .ant-back-top {
+    right: 150px;
+  }
+
+  :host ::ng-deep strong {
+    color: rgba(64, 64, 64, 0.6);
+  }
