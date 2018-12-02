@@ -6,7 +6,8 @@
     overflow: hidden;   
     height: 100%; 
 }   
-.child{   
+.child{ 
+    position:relative; 
     float: left;   
     height: 100%;   
     width: 50%;   
@@ -22,7 +23,7 @@
     display: block;
     margin: 0, auto;
 }
-.input {
+.input { 
     height: 100%;   
     width: 99%; 
 }
@@ -42,4 +43,9 @@
     position:absolute;
     right:5px;
     top: 5px;
+}
+.save {
+    position:absolute;
+    right:20px;
+    top: 10px;
 }

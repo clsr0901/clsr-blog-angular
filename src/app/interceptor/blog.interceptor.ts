@@ -15,17 +15,14 @@ export class BlogInterceptor implements HttpInterceptor {
 
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log('token', this.httpService.getToken())
         var authReq = req.clone({
             headers: req.headers
         });
         if (this.httpService.getToken()) {
-            console.log('ddd')
             authReq = req.clone({
                 headers: req.headers.set('Authorization', this.httpService.getToken())
             });
         }
-        console.log(req, '222')
         return next.handle(authReq)
             .pipe(
                 mergeMap((event: any) => {
@@ -37,7 +34,6 @@ export class BlogInterceptor implements HttpInterceptor {
                 }),
                 catchError((error, caught) => {
                     this.message.error(error.error.message);
-                    console.log(error.headers.get('authorization'), 'event')
                     return Observable.create(error);
                 })) as any;
     }
