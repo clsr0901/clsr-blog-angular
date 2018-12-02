@@ -7,24 +7,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BlogInterceptor } from './interceptor/blog.interceptor';
-
-
+import { MarkdownModule } from 'ngx-markdown';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { LoginComponent } from './login/login.component';
 import { HttpRequestService } from './http-request.service';
 import { from } from 'rxjs';
-import { EditComponent } from './edit/edit.component';
 import { HomeComponent } from './home/home.component';
+import { EditComponent } from './edit/edit.component';
 registerLocaleData(zh);
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    EditComponent,
     HomeComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +32,8 @@ registerLocaleData(zh);
     ReactiveFormsModule,
     HttpClientModule,
     NgZorroAntdModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MarkdownModule.forRoot()
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }, HttpRequestService,
   { provide: HTTP_INTERCEPTORS, useClass: BlogInterceptor, multi: true }

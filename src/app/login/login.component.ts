@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.user.username = username;
       this.httpRequestService.httpPost("/login/in",this.user).subscribe(res => {
         this.httpRequestService.setToken(res.token);
-        this.router.navigateByUrl("/home");
+        this.router.navigateByUrl("/edit");
       });
     }
 

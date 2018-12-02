@@ -1,0 +1,45 @@
+.parentWrap{   
+    overflow: hidden;  
+    height: 100%; 
+}   
+.parent{   
+    overflow: hidden;   
+    height: 100%; 
+}   
+.child{   
+    float: left;   
+    height: 100%;   
+    width: 50%;   
+    padding: 5px;   
+    display: block;
+    margin: 0, auto;
+} 
+.fullChild{
+    float: left;   
+    height: 100%;   
+    width: 100%;   
+    padding: 5px;   
+    display: block;
+    margin: 0, auto;
+}
+.input {
+    height: 100%;   
+    width: 99%; 
+}
+.markdownParent {
+    position:relative;
+    height: 100%;
+    width: 99%; 
+    border: 1px solid #eee;
+    border-radius: 5px;
+    overflow: auto;
+}
+.markdown {
+    height: 100%;
+    width: 100%; 
+}
+.markdown_control {
+    position:absolute;
+    right:5px;
+    top: 5px;
+}

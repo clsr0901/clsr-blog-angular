@@ -1,3 +1,25 @@
-<p>
-  edit works!
-</p>
+<!-- <div class="wrapper">
+  <div class="span6">
+    <markdown class="markdown" [data]="markdown"></markdown>
+  </div>
+  <div class="span6">
+    <textarea class="input" nz-input [(ngModel)]="markdown" [nzAutosize]="{ minRows: 2, maxRows: 6 }"></textarea>
+  </div>
+</div> -->
+
+<div class="parentWrap">
+  <div class="parent" >
+    <div  [class.child]="editable === true" [class.fullChild]="editable === false">
+      <div class="markdownParent">
+          <markdown class="markdown" [data]="markdown"></markdown>
+          <nz-button-group class="markdown_control">
+              <button nz-button nzType="primary" (click)="edit()"><i nz-icon type="left"></i>编辑</button>
+              <button nz-button nzType="primary" (click)="review()">预览<i nz-icon type="right"></i></button>
+            </nz-button-group>
+      </div>
+    </div>
+    <div class="child" *ngIf="editable">
+      <textarea class="input" nz-input [(ngModel)]="markdown"></textarea>
+    </div>
+  </div>
+</div>
