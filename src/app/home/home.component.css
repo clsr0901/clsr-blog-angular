@@ -1,0 +1,32 @@
+.home-layout {
+    height: 100%;
+    background: #908;
+}
+.home-header{
+    height: 64px;
+    width: 100%;
+    background: #fff;
+}
+
+.home-content {
+    width: 100%;
+    height: calc(100vh - 112px);
+}
+
+.home-footer {
+    height: 48px;
+    margin-top: -48pxs;
+    width: 100%;
+}
+
+.content-left{
+    background: #f00;
+    height: 100%;
+}
+.content-middle {
+    background: #0f0;
+    height: 100%;
+}
+.content-right {
+    height: 100%;
+}

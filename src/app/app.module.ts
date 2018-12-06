@@ -16,6 +16,7 @@ import { HttpRequestService } from './http-request.service';
 import { from } from 'rxjs';
 import { HomeComponent } from './home/home.component';
 import { EditComponent } from './edit/edit.component';
+import { HeaderComponent } from './header/header.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -24,6 +25,7 @@ registerLocaleData(zh);
     LoginComponent,
     HomeComponent,
     EditComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
