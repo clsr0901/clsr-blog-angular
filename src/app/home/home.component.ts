@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {HeaderComponent} from '../header/header.component'
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('header')
+  header: HeaderComponent;
+  avatar: string = "//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png";
 
   constructor(private activatedRoute: ActivatedRoute) { 
-    
   }
 
   ngOnInit() {
@@ -17,6 +21,11 @@ export class HomeComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       console.log("home", params);
       });
+      this.header.greeting("parent");
+  }
+
+  headerHeaderClick(event){
+    console.log(event)
   }
 
 }

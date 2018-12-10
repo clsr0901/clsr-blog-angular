@@ -17,6 +17,7 @@ import { from } from 'rxjs';
 import { HomeComponent } from './home/home.component';
 import { EditComponent } from './edit/edit.component';
 import { HeaderComponent } from './header/header.component';
+import { UserinfoComponent } from './userinfo/userinfo.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -26,6 +27,7 @@ registerLocaleData(zh);
     HomeComponent,
     EditComponent,
     HeaderComponent,
+    UserinfoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,13 @@
 <nz-layout class="home-layout">
   <nz-header class="home-header">
-    <app-header ></app-header>
+    <app-header #header [avatar]="avatar" (header)="headerHeaderClick($event)"></app-header>
   </nz-header>
-  <div nz-row class="home-content">
-    <div nz-col nzSpan="6" class="content-left">col-6</div>
+  <div nz-row nzType="flex" nzJustify="center"  class="home-content">
+    <div nz-col nzSpan="5" class="content-left">
+      <app-userinfo class="userinfo"></app-userinfo>
+    </div>
     <div nz-col nzSpan="12" class="content-middle">col-8</div>
-    <div nz-col nzSpan="6" class="content-right">col-8</div>
+    <div nz-col nzSpan="5" class="content-right">col-8</div>
   </div>
   <nz-footer class="home-footer">Footer</nz-footer>
 </nz-layout>

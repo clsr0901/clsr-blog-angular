@@ -1,16 +1,17 @@
 .home-layout {
     height: 100%;
-    background: #908;
+    background: #eee;
 }
 .home-header{
-    height: 64px;
+    height: 48px;
     width: 100%;
     background: #fff;
 }
 
 .home-content {
     width: 100%;
-    height: calc(100vh - 112px);
+    height: calc(100vh - 106px);
+    margin-top: 10px;
 }
 
 .home-footer {
@@ -20,8 +21,12 @@
 }
 
 .content-left{
-    background: #f00;
-    height: 100%;
+    background: #fff;
+    min-height: 60%;
+    margin-right: 20px;
+}
+.userinfo {
+    text-align: center;
 }
 .content-middle {
     background: #0f0;
@@ -29,4 +34,6 @@
 }
 .content-right {
     height: 100%;
+    margin-left: 20px;
+    background: #0f0;
 }
