@@ -1,0 +1,71 @@
+.icon {
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+    background: #fff;
+}
+
+  .avatar {
+      font-size: 64px;
+      height: 64px;
+      width: 64px;
+      margin-top: 30px;
+  }
+
+  .name {
+   height: 30px;
+   text-align: center;
+   font-size: 18px;
+   color: #3d3d3d;
+   background: #fff
+  }
+
+  .info {
+      height: 120px;
+      width: 100%;
+      background: #fff;
+  }
+  
+  .data-col {
+      display: flex;
+      height: 100%;
+      width: 25%;
+  }
+
+  .data {
+      align-self: center;
+      width: 100%;
+      color: #333;
+  }
+
+.data-conent {
+    font-weight: 700;
+}
+
+.action {
+    height: 120px;
+    width: 100%;
+    
+}
+
+.button {
+    height: 120px;
+    line-height: 120px;
+    display: flex;
+}
+
+.attent {
+    height: 36px;
+    width: 100px;
+    border: 1px solid #CA0C16;
+    color: #CA0C16;
+    border-radius: 5px;
+    line-height: 36px;
+    align-self: center;
+    margin: 0 auto;
+}
+
+.attent:hover {
+    background: rgba(202, 12, 22, 0.2);
+    cursor: pointer;
+}
