@@ -10,14 +10,23 @@
 
 .home-content {
     width: 100%;
-    height: calc(100vh - 106px);
+    height: calc(100vh - 68px);
     margin-top: 10px;
+    margin-bottom: 21px;
 }
 
 .home-footer {
-    height: 48px;
-    margin-top: -48pxs;
+    float: right;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
     width: 100%;
+    height: 20px;
+    line-height: 20px;
+    background-color: #fff;
+    z-index: 9999;
+    padding-right: 10px;
+    text-align:right;
 }
 
 .content-left{
@@ -29,8 +38,15 @@
     text-align: center;
 }
 .content-middle {
-    background: #0f0;
+    background: #fff;
     height: 100%;
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.content-middle::-webkit-scrollbar {
+    display: none;
 }
 .content-right {
     height: 100%;

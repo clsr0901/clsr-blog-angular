@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {HeaderComponent} from '../header/header.component'
+import {HeaderComponent} from '../header/header.component';
+import { Router } from '@angular/router';
 import { from } from 'rxjs';
 
 @Component({
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   header: HeaderComponent;
   avatar: string = "//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png";
 
-  constructor(private activatedRoute: ActivatedRoute) { 
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) { 
   }
 
   ngOnInit() {
@@ -26,6 +27,9 @@ export class HomeComponent implements OnInit {
 
   headerHeaderClick(event){
     console.log(event)
+    if(event == 0){
+      this.router.navigateByUrl("/edit");
+    }
   }
 
 }

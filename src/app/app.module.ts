@@ -18,6 +18,8 @@ import { HomeComponent } from './home/home.component';
 import { EditComponent } from './edit/edit.component';
 import { HeaderComponent } from './header/header.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
+import {BlogListComponent} from './blog-list/blog-list.component';
+import {BlogCardComponent} from './blog-card/blog-card.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -28,6 +30,8 @@ registerLocaleData(zh);
     EditComponent,
     HeaderComponent,
     UserinfoComponent,
+    BlogListComponent,
+    BlogCardComponent
   ],
   imports: [
     BrowserModule,
