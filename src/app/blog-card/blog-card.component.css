@@ -21,9 +21,12 @@
     font-weight: 900;
 }
 
+.card-title:hover {
+    color: #CA0C16;
+}
+
 .card-content {
     margin-bottom: 1px;
-    marker-start: 5px;
     display: inline-block;
     white-space: nowrap; 
     width: 100%; 

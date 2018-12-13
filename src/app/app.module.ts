@@ -21,6 +21,8 @@ import { UserinfoComponent } from './userinfo/userinfo.component';
 import {BlogListComponent} from './blog-list/blog-list.component';
 import {BlogCardComponent} from './blog-card/blog-card.component';
 import { StringSubPipePipe } from './pipe/string-sub-pipe.pipe';
+import { EventService } from './service/event.service';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -33,7 +35,8 @@ registerLocaleData(zh);
     UserinfoComponent,
     BlogListComponent,
     BlogCardComponent,
-    StringSubPipePipe
+    StringSubPipePipe,
+    BlogDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ registerLocaleData(zh);
     MarkdownModule.forRoot()
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }, HttpRequestService,
-  { provide: HTTP_INTERCEPTORS, useClass: BlogInterceptor, multi: true }
+  { provide: HTTP_INTERCEPTORS, useClass: BlogInterceptor, multi: true },
+  EventService
   ],
   bootstrap: [AppComponent]
 })

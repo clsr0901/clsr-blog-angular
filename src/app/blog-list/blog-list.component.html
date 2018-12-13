@@ -1,5 +1,5 @@
 <div>
     <div *ngFor="let blog of blogs">
-        <app-blog-card [blog]="blog"></app-blog-card>
+        <app-blog-card [blog]="blog" (click)="onSelect(blog)"></app-blog-card>
     </div>
 </div>

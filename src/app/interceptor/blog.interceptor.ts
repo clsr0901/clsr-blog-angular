@@ -5,11 +5,12 @@ import { catchError } from 'rxjs/operators';
 import { mergeMap } from 'rxjs/operators';
 import { NzMessageService } from 'ng-zorro-antd';
 import { HttpRequestService } from '../http-request.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class BlogInterceptor implements HttpInterceptor {
 
-    constructor(private message: NzMessageService, private httpService: HttpRequestService) {
+    constructor(private message: NzMessageService, private httpService: HttpRequestService, private router: Router) {
 
     }
 
@@ -27,12 +28,19 @@ export class BlogInterceptor implements HttpInterceptor {
             .pipe(
                 mergeMap((event: any) => {
                     if (event instanceof HttpResponse) {
-                        if (event.status != 200)
+                        if (event.status != 200) {
                             this.message.error(event.body.msg);
+                        }
+                       
+
                     }
                     return Observable.create(observer => observer.next(event)); //请求成功返回响应
                 }),
                 catchError((error, caught) => {
+                    if (error.status == 417) {
+                        this.httpService.setToken(null);
+                        this.router.navigateByUrl("/login");
+                    }
                     this.message.error(error.error.message);
                     return Observable.create(error);
                 })) as any;
