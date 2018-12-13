@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog } from '../entity/Blog';
+import { HttpRequestService } from "../http-request.service";
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-blog-list',
@@ -8,11 +10,14 @@ import { Blog } from '../entity/Blog';
 })
 export class BlogListComponent implements OnInit {
 
-  array:Array<number> = [1,2,3,4, 5, 6, 7, 8, 9, 1,2,3,4, 5, 6, 7, 8, 9, 1,2,3,4, 5, 6, 7, 8, 9];
-  constructor() { }
+  blogs: Blog[];
+  constructor(private httpRequestService: HttpRequestService) { }
 
   ngOnInit() {
-  
+    this.httpRequestService.httpGet("/blog/get").subscribe(res => {
+     this.blogs = res.data;
+    }, err =>{
+    });
   }
 
 }

@@ -7,17 +7,17 @@ import { User } from './entity/User';
   providedIn: 'root'
 })
 export class HttpRequestService {
+
   baseUrl = 'http://localhost:8080';
 
-  private token: string;
   private user: User;
 
 
   setToken(token: string): void {
-    this.token = token;
+    localStorage.setItem('token', token);
   }
   getToken(): string {
-    return this.token;
+    return localStorage.getItem('token');
   }
   setUser(user: User): void{
     this.user = user;

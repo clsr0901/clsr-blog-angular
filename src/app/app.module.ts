@@ -20,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import {BlogListComponent} from './blog-list/blog-list.component';
 import {BlogCardComponent} from './blog-card/blog-card.component';
+import { StringSubPipePipe } from './pipe/string-sub-pipe.pipe';
 registerLocaleData(zh);
 
 @NgModule({
@@ -31,7 +32,8 @@ registerLocaleData(zh);
     HeaderComponent,
     UserinfoComponent,
     BlogListComponent,
-    BlogCardComponent
+    BlogCardComponent,
+    StringSubPipePipe
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ export class Blog {
     public userId: number;
     public content: string;
     public title: string;
+    public summary: string;
     public hit: number;
     public view: number;
     public sticky: boolean;

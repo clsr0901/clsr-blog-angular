@@ -1,17 +1,17 @@
 <div class="card-wrapper">
-  <div class="card-title card-common">标题</div>
-  <div class="card-content card-common">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内</div>
+  <div class="card-title card-common">{{blog.title}}</div>
+  <markdown class="card-content card-common" [data]="blog.summary|stringSubPipe:100"></markdown>
   <div class="card-footer card-common" nz-cow>
     <div nz-col nzSpan="16" class="card-footer-left">
-      <nz-avatar class="card-footer-left card-avatar" nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
-      <span class="card-footer-left card-name">名字</span>
+      <img class="card-footer-left card-avatar" src="{{blog.user.avatar}}"/>
+      <span class="card-footer-left card-name">{{blog.user.username}}</span>
       <span class="card-footer-left card-point"></span>
-      <span class="card-footer-left card-footer-left">时间</span>
+      <span class="card-footer-left card-footer-left">{{blog.updatetime}}</span>
     </div>
     <div nz-col nzSpan="8" >
-        <span class="card-footer-right"><span class="card-num">445</span>评论</span>
+        <span class="card-footer-right"><span class="card-num"></span>评论</span>
         <span class="card-footer-right card-point"></span>
-        <span class="card-footer-right"><span class="card-num">445</span>阅读</span>
+        <span class="card-footer-right"><span class="card-num">{{blog.view}}</span>阅读</span>
     </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MarkdownService } from 'ngx-markdown';
 
 @Component({
   selector: 'app-blog-card',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() blog: Blob;
+
+  constructor(private markdownService: MarkdownService) { }
 
   ngOnInit() {
   }

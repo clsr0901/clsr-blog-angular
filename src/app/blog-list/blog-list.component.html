@@ -1,5 +1,5 @@
 <div>
-    <div *ngFor="let hero of array">
-        <app-blog-card></app-blog-card>
+    <div *ngFor="let blog of blogs">
+        <app-blog-card [blog]="blog"></app-blog-card>
     </div>
 </div>

@@ -22,14 +22,16 @@ export class EditComponent implements OnInit {
   private blog: Blog = new Blog();
   private user: User;
 
-  constructor(private markdownService: MarkdownService, private httpService: HttpRequestService, 
+  constructor(private markdownService: MarkdownService, private httpRequestService: HttpRequestService, 
     private message: NzMessageService,private router: Router) { }
 
   ngOnInit() {
-    this.user = this.httpService.getUser();
+    this.user = this.httpRequestService.getUser();
+
   }
 
   save(): void {
+    console.log("ddd", this.blog.content)
     if (!this.blog.content || this.blog.content.length < 1) {
       this.message.error("请先编辑博客内容");
       return;
@@ -43,7 +45,7 @@ export class EditComponent implements OnInit {
       return;
     }
     this.blog.userId = this.user.id;
-    this.httpService.httpPost("/blog/save", this.blog).subscribe(res => {
+    this.httpRequestService.httpPost("/blog/save", this.blog).subscribe(res => {
       console.log("blog", res)
       this.isVisibleMiddle = false;
       this.router.navigateByUrl("/home");
