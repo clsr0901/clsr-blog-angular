@@ -1,4 +1,17 @@
 <div style="padding: 10px;">
-  <button nz-button nzType="primary" (click)="back()" class="back">返回列表</button>
-  <markdown class="markdown" [data]="blog?blog.content:''"></markdown>
+  <div class="detail-title" nz-row>
+    <div nz-col nzSpan="2">
+      <i nz-icon [type]="'left-square'" class="back" (click)="back()"></i>
+    </div>
+    <div nz-col nzSpan="22" style="height:100%;">
+      <div class="detail-title-content">{{blog.title}}</div>
+      <div class="detail-title-time">
+        <span style="margin-right:14px; font-size:16px;">{{blog.updatetime | stringSubPipe:19}}</span> 
+        <span style="margin-right:5px; font-size:16px;">阅读数:</span>
+        <span style="margin-right:14px; font-size:16px;">{{blog.view}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="line"></div>
+  <markdown class="markdown" [data]="blog.content"></markdown>
 </div>

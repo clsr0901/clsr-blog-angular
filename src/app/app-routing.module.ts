@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'home', component: HomeComponent, children: [
       { path: '', redirectTo: '/home/list', pathMatch: 'full' },
       { path: 'list', component: BlogListComponent },
-      { path: 'detail', component: BlogDetailComponent },
+      { path: 'detail/:id', component: BlogDetailComponent },
     ]
   },
   { path: 'edit', component: EditComponent },

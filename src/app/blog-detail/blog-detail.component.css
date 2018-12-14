@@ -1,11 +1,37 @@
+
+.detail-title {
+    height: 120px;
+}
+
+.back {
+    height: 120px;
+    width: 60px;
+    line-height: 120px;
+    font-size: 40px;
+}
+
+.back:hover {
+    font-size: 60px;
+    word-wrap: break-word;
+    color: #00a0e9;
+}
+
+.detail-title-content{
+    height: 80px;
+    width: 100%;
+    font-size: 40px;
+    line-height: 80px;
+    color: #3d3d3d;
+    font-weight: 900;
+}
+
+.detail-title-time {
+    height: 40px;
+    line-height: 40px;
+}
+
 .markdown {
     height: 100%;
     width: 100%; 
     padding: 10px;
-}
-
-.back {
-    position:absolute;
-    right:20px;
-    top: 10px;
 }

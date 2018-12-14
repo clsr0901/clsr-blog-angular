@@ -23,6 +23,8 @@ import {BlogCardComponent} from './blog-card/blog-card.component';
 import { StringSubPipePipe } from './pipe/string-sub-pipe.pipe';
 import { EventService } from './service/event.service';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import {SimpleReuseStrategy} from './strategy/simple-reuse-strategy';
+import { RouteReuseStrategy } from '@angular/router';
 registerLocaleData(zh);
 
 @NgModule({
@@ -50,6 +52,7 @@ registerLocaleData(zh);
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }, HttpRequestService,
   { provide: HTTP_INTERCEPTORS, useClass: BlogInterceptor, multi: true },
+  { provide: RouteReuseStrategy, useClass: SimpleReuseStrategy },
   EventService
   ],
   bootstrap: [AppComponent]

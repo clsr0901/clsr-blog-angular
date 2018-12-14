@@ -6,8 +6,9 @@
     <div nz-col nzSpan="5" class="content-left">
       <app-userinfo class="userinfo"></app-userinfo>
     </div>
-    <div nz-col nzSpan="12" class="content-middle">
+    <div nz-col nzSpan="12" class="content-middle" #divTarget>
       <router-outlet ></router-outlet>
+      <nz-back-top [nzTarget]="divTarget"></nz-back-top>
     </div>
     <div nz-col nzSpan="5" class="content-right">col-8</div>
   </div>

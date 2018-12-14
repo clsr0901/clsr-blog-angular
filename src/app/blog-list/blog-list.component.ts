@@ -24,7 +24,7 @@ export class BlogListComponent implements OnInit {
   }
 
   onSelect(blog: Blob): void{
-    this.router.navigateByUrl("/home/detail");
+    this.router.navigateByUrl("/home/detail/" + blog.id);
   }
 
 }
