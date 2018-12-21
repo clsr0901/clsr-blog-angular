@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   headerHeaderClick(event){
     console.log(event)
     if(event == 0){
-      this.router.navigateByUrl("/edit");
+      this.router.navigateByUrl("/edit/0");
     }
   }
 

@@ -6,7 +6,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { User } from '../entity/User';
 import { NzMessageService } from 'ng-zorro-antd';
 import { catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -19,43 +19,70 @@ export class EditComponent implements OnInit {
   markdown: string;
   editable: boolean = true;
   isVisibleMiddle: boolean = false;
-  private blog: Blog = new Blog();
-  private user: User;
+  blog: Blog = new Blog();
+  user: User;
+  id: number;
 
-  constructor(private markdownService: MarkdownService, private httpRequestService: HttpRequestService, 
-    private message: NzMessageService,private router: Router) { }
+  constructor(private markdownService: MarkdownService, private httpRequestService: HttpRequestService,
+    private message: NzMessageService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.user = this.httpRequestService.getUser();
-
+    this.id = this.activatedRoute.snapshot.params.id;
+    console.log("id", this.id)
+    if (this.id != 0) {
+      this.httpRequestService.httpGet("/blog/get/" + this.activatedRoute.snapshot.params.id).subscribe(res => {
+        this.blog = res.data;
+      }, err => {
+      });
+    }
   }
 
   save(): void {
-    console.log("ddd", this.blog.content)
     if (!this.blog.content || this.blog.content.length < 1) {
       this.message.error("请先编辑博客内容");
       return;
     }
     this.isVisibleMiddle = true;
-   
+
   }
-  handleOkMiddle(): void{
+  handleOkMiddle(): void {
     if (!this.blog.title || this.blog.title.length < 1) {
       this.message.error("请输入博客标题");
       return;
     }
+    console.log(this.user, "user")
     this.blog.userId = this.user.id;
-    this.httpRequestService.httpPost("/blog/save", this.blog).subscribe(res => {
-      console.log("blog", res)
+    console.log(this.blog, "ididididi")
+    delete this.blog.user;
+    if (this.id === 0) {
+      this.put();
+    } else {
+      this.post();
+    }
+  }
+  handleCancelMiddle(): void {
+    this.isVisibleMiddle = false;
+  }
+
+  put() {
+    this.httpRequestService.httpPut("/blog/put", this.blog).subscribe(res => {
       this.isVisibleMiddle = false;
       this.router.navigateByUrl("/home");
-      
-    }, err =>{
-        
+
+    }, err => {
+
     });
   }
-  handleCancelMiddle(): void{
-    this.isVisibleMiddle = false;
+
+  post() {
+    this.httpRequestService.httpPost("/blog/post", this.blog).subscribe(res => {
+      this.isVisibleMiddle = false;
+      this.router.navigateByUrl("/home");
+
+    }, err => {
+
+    });
   }
 
   edit(): void {

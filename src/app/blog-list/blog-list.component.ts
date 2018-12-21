@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Blog } from '../entity/Blog';
 import { HttpRequestService } from "../http-request.service";
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
+import { Blog } from '../entity/Blog';
 
 @Component({
   selector: 'app-blog-list',
@@ -23,7 +23,7 @@ export class BlogListComponent implements OnInit {
     });
   }
 
-  onSelect(blog: Blob): void{
+  onSelect(blog: Blog): void{
     this.router.navigateByUrl("/home/detail/" + blog.id);
   }
 

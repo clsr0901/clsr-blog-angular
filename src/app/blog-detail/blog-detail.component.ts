@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpRequestService } from "../http-request.service";
 import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
-import {Blog} from '../entity/Blog';
 import { from } from 'rxjs';;
 import { filter,map,mergeMap } from 'rxjs/operators';
+import { Blog } from '../entity/Blog';
+import { Location } from '@angular/common';
+import { NzModalService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-blog-detail',
@@ -12,11 +14,15 @@ import { filter,map,mergeMap } from 'rxjs/operators';
 })
 export class BlogDetailComponent implements OnInit {
 
-  blog: Blob;
-  constructor(private httpRequestService: HttpRequestService, private router: Router, private activatedRoute: ActivatedRoute) {}
+  blog: Blog;
+  isVisible = false;
+  isOkLoading = false;
+
+  constructor(private httpRequestService: HttpRequestService, private router: Router, 
+    private activatedRoute: ActivatedRoute, private location: Location, private modalService: NzModalService) {}
 
   ngOnInit() {
-    this.blog = new Blob();
+    this.blog = new Blog();
     this.blog.updatetime = "";
     this.getBlog();
   }
@@ -29,7 +35,26 @@ export class BlogDetailComponent implements OnInit {
   }
 
   back() {
-    history.back();
+    // history.back();
+    this.location.back();
   }
+
+  edit(id: number) {
+    this.router.navigateByUrl("/edit/" + id);
+  }
+
+  delete() {
+    this.modalService.error({
+      nzTitle: '删除',
+      nzContent: '确定删除 【 ' + this.blog.title + ' 】 ？',
+      nzCancelText: '取消',
+      nzOnOk: () => {this.httpRequestService.httpDelete("/blog/delete/" + this.blog.id).subscribe(res=>{
+        this.back();
+      }, err=>{})},
+    });
+  }
+
+  
+
 
 }

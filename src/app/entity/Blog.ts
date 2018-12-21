@@ -1,3 +1,5 @@
+import { User } from "./User";
+
 export class Blog {
     
     public id: number;
@@ -11,6 +13,7 @@ export class Blog {
     public hightlight: boolean;
     public createtime: string;
     public updatetime: string;
+    public user: User;
 
     constructor(
     ) { }

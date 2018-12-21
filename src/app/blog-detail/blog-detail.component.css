@@ -28,6 +28,34 @@
 .detail-title-time {
     height: 40px;
     line-height: 40px;
+    display: flex;
+}
+
+.detail-operater {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+.edit {
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    color: #3399EA;
+}
+.edit:hover{
+    font-size: 25px;
+}
+
+.delete {
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    color: #CA0C16;
+}
+.delete:hover{
+    font-size: 25px;
 }
 
 .markdown {

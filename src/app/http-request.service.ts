@@ -9,8 +9,7 @@ import { User } from './entity/User';
 export class HttpRequestService {
 
   baseUrl = 'http://localhost:8080';
-
-  private user: User;
+  // baseUrl = '';
 
 
   setToken(token: string): void {
@@ -20,10 +19,10 @@ export class HttpRequestService {
     return localStorage.getItem('token');
   }
   setUser(user: User): void{
-    this.user = user;
+    localStorage.setItem('user', JSON.stringify(user));
   }
   getUser(): User{
-    return this.user;
+    return JSON.parse(localStorage.getItem('user'));
   }
   
   setHeaders() {
@@ -35,6 +34,14 @@ export class HttpRequestService {
   }
 
   constructor(private httpClient: HttpClient) { }
+
+  httpPut(reqUrl: string, repBody): Observable<any> {
+    return this.httpClient.put(this.baseUrl + reqUrl, repBody, this.setHeaders());
+  }
+
+  httpDelete(reqUrl: string): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + reqUrl, this.setHeaders());
+  }
 
   httpPost(reqUrl: string, repBody): Observable<any> {
     return this.httpClient.post(this.baseUrl + reqUrl, repBody, this.setHeaders());

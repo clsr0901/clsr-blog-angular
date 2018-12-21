@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MarkdownService } from 'ngx-markdown';
+import { Blog } from '../entity/Blog';
 
 @Component({
   selector: 'app-blog-card',
@@ -8,7 +9,7 @@ import { MarkdownService } from 'ngx-markdown';
 })
 export class BlogCardComponent implements OnInit {
 
-  @Input() blog: Blob;
+  @Input() blog: Blog;
 
   constructor(private markdownService: MarkdownService) { }
 
