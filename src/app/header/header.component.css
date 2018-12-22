@@ -1,42 +1,58 @@
 .app-header{
     height: 48px;
     width: 100%;
-}
-.hear-row {
     display: flex;
-    text-align: center;
 }
-.gutter-row {
-    margin-top: 6px;
-    height: 36px;
-    display: flex;
-    justify-content:center;
-    align-items:Center;
-}
-.heder-search {
-    width: 240px;
-}
-.header-right {
 
+.header-side {
+    flex: 1;
 }
+
+.header-content {
+    flex: 2;
+    align-items: center;
+    display: flex;
+}
+
+.logo {
+    align-items: center;
+    height: 48px;
+    line-height: 48px;
+    
+}
+
+.heder-search {
+    flex-grow: 1;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .source{
     color: #3D3D3D;
-    font-size: 16px;
-    padding: 5px;
+    font-size: 14px;
+    padding: 2px;
+    height: 48px;
+    line-height: 48px;
 }
 .write{
     color: #3D3D3D;
-    font-size: 16px;
-    padding: 5px;
+    font-size: 14px;
+    padding: 2px;
+    height: 48px;
+    line-height: 48px;
 }
 
 .write:hover{
     color: #CA0C16;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
+    height: 48px;
+    line-height: 48px;
 }
 .source:hover {
     color: #3399EA;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
+    height: 48px;
+    line-height: 48px;
 }

@@ -29,7 +29,6 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     this.user = this.httpRequestService.getUser();
     this.id = this.activatedRoute.snapshot.params.id;
-    console.log("id", this.id)
     if (this.id != 0) {
       this.httpRequestService.httpGet("/blog/get/" + this.activatedRoute.snapshot.params.id).subscribe(res => {
         this.blog = res.data;
@@ -51,11 +50,9 @@ export class EditComponent implements OnInit {
       this.message.error("请输入博客标题");
       return;
     }
-    console.log(this.user, "user")
     this.blog.userId = this.user.id;
-    console.log(this.blog, "ididididi")
     delete this.blog.user;
-    if (this.id === 0) {
+    if (this.id == 0) {
       this.put();
     } else {
       this.post();

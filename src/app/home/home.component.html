@@ -1,16 +1,19 @@
 <nz-layout class="home-layout">
-  <nz-header class="home-header">
+  <div class="home-header">
     <app-header #header [avatar]="avatar" (header)="headerHeaderClick($event)"></app-header>
-  </nz-header>
-  <div nz-row nzType="flex" nzJustify="center"  class="home-content">
-    <div nz-col nzSpan="5" class="content-left">
-      <app-userinfo class="userinfo"></app-userinfo>
+  </div>
+  <div class="home-content">
+    <div class="content-left">
+      <div class="userinfo-warpper">
+        <app-userinfo class="userinfo"></app-userinfo>
+      </div>
     </div>
-    <div nz-col nzSpan="12" class="content-middle" #divTarget>
-      <router-outlet ></router-outlet>
+    <div class="content-middle" #divTarget>
+      <router-outlet></router-outlet>
       <nz-back-top [nzTarget]="divTarget"></nz-back-top>
     </div>
-    <div nz-col nzSpan="5" class="content-right">col-8</div>
+    <div class="content-right">col-8</div>
   </div>
-  <div class="home-footer"><a href="https://github.com/chenls520" target="_blank"><span style=" color: #CA0C16; font-style:italic;"> 网站源码,欢迎 star</span></a></div>
+  <div class="home-footer"><a href="https://github.com/chenls520" target="_blank"><span style=" color: #CA0C16; font-style:italic;">
+        网站源码,欢迎 star</span></a></div>
 </nz-layout>

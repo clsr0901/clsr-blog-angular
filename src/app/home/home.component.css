@@ -13,6 +13,7 @@
     height: calc(100vh - 68px);
     margin-top: 10px;
     margin-bottom: 21px;
+    display: flex;
 }
 
 .home-footer {
@@ -29,10 +30,15 @@
     text-align:right;
 }
 
-.content-left{
+.userinfo-warpper {
     background: #fff;
     min-height: 60%;
-    margin-right: 20px;
+}
+
+.content-left{
+    flex: 1;
+    margin-left: 20px;
+    margin-right: 10px;
 }
 .userinfo {
     text-align: center;
@@ -43,6 +49,9 @@
     background-color: #fff;
     overflow-x: hidden;
     overflow-y: scroll;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex: 2;
 }
 
 .content-middle::-webkit-scrollbar {
@@ -50,6 +59,8 @@
 }
 .content-right {
     height: 100%;
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 20px;
     background: #0f0;
+    flex: 1;
 }

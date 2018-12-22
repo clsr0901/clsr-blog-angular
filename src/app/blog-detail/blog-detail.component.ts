@@ -6,6 +6,7 @@ import { filter,map,mergeMap } from 'rxjs/operators';
 import { Blog } from '../entity/Blog';
 import { Location } from '@angular/common';
 import { NzModalService } from 'ng-zorro-antd';
+import { User } from '../entity/User';
 
 @Component({
   selector: 'app-blog-detail',
@@ -17,13 +18,15 @@ export class BlogDetailComponent implements OnInit {
   blog: Blog;
   isVisible = false;
   isOkLoading = false;
+  user: User;
 
-  constructor(private httpRequestService: HttpRequestService, private router: Router, 
+  constructor(private httpRequestService: HttpRequestService, private router: Router,
     private activatedRoute: ActivatedRoute, private location: Location, private modalService: NzModalService) {}
 
   ngOnInit() {
     this.blog = new Blog();
     this.blog.updatetime = "";
+    this.user = this.httpRequestService.getUser();
     this.getBlog();
   }
 

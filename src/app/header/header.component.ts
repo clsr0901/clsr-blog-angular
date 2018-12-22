@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   @Output('header') write = new EventEmitter<any>();
 
   search: string;
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit() {
   }
@@ -24,6 +25,11 @@ export class HeaderComponent implements OnInit {
   clickWrite(type) {
     console.log("child clickWrite")
     this.write.emit(type);
+  }
+
+  toHome(){
+    console.log("home")
+    this.route.navigateByUrl("/home");
   }
 
 }
