@@ -3,6 +3,7 @@ import { HttpRequestService } from "../http-request.service";
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { Blog } from '../entity/Blog';
+import { EventService } from '../service/event.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -11,12 +12,11 @@ import { Blog } from '../entity/Blog';
 })
 export class BlogListComponent implements OnInit {
 
-
-
   blogs: Blog[];
-  constructor(private httpRequestService: HttpRequestService, private router: Router) { }
+  constructor(private httpRequestService: HttpRequestService, private router: Router, private evnetService: EventService) { }
 
   ngOnInit() {
+    this.evnetService.eventEmit.emit(null);
     this.httpRequestService.httpGet("/blog/get").subscribe(res => {
      this.blogs = res.data;
     }, err =>{
@@ -24,6 +24,7 @@ export class BlogListComponent implements OnInit {
   }
 
   onSelect(blog: Blog): void{
+    this.evnetService.eventEmit.emit(blog);
     this.router.navigateByUrl("/home/detail/" + blog.id);
   }
 

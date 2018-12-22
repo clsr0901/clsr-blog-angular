@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.httpRequestService.setToken("");
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]],

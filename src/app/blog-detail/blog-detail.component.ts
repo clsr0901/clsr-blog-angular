@@ -7,6 +7,7 @@ import { Blog } from '../entity/Blog';
 import { Location } from '@angular/common';
 import { NzModalService } from 'ng-zorro-antd';
 import { User } from '../entity/User';
+import { EventService } from '../service/event.service';
 
 @Component({
   selector: 'app-blog-detail',
@@ -21,7 +22,8 @@ export class BlogDetailComponent implements OnInit {
   user: User;
 
   constructor(private httpRequestService: HttpRequestService, private router: Router,
-    private activatedRoute: ActivatedRoute, private location: Location, private modalService: NzModalService) {}
+    private activatedRoute: ActivatedRoute, private location: Location, private modalService: NzModalService,
+    private evnetService: EventService) {}
 
   ngOnInit() {
     this.blog = new Blog();

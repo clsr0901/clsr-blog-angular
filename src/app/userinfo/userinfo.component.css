@@ -24,48 +24,60 @@
       height: 120px;
       width: 100%;
       background: #fff;
+      display: flex;
   }
   
   .data-col {
       display: flex;
       height: 100%;
       width: 25%;
+      flex: 1;
   }
 
   .data {
       align-self: center;
       width: 100%;
       color: #333;
+      font-size: 12px;
   }
 
 .data-conent {
     font-weight: 700;
+    font-size: 14px;
 }
 
 .action {
-    height: 120px;
     width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     
 }
 
+.message {
+    margin-top: 5px;
+    width: 100%;
+}
+
 .button {
-    height: 120px;
-    line-height: 120px;
+    margin-top: 5px;
     display: flex;
+    margin-bottom: 20px;
 }
 
 .attent {
-    height: 36px;
+    height: 30px;
+    line-height: 30px;
     width: 100px;
-    border: 1px solid #CA0C16;
-    color: #CA0C16;
-    border-radius: 5px;
-    line-height: 36px;
+    border: 1px solid #3399EA;
+    color: #3399EA;
+    border-radius: 2px;
+    font-size: 14px;
     align-self: center;
-    margin: 0 auto;
 }
 
 .attent:hover {
-    background: rgba(202, 12, 22, 0.2);
+    background: rgba(51, 153, 234, 0.2);
     cursor: pointer;
 }

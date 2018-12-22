@@ -19,7 +19,7 @@ export class BlogInterceptor implements HttpInterceptor {
         var authReq = req.clone({
             headers: req.headers
         });
-        if (this.httpService.getToken()) {
+        if (this.httpService.getToken() != null && this.httpService.getToken() != "") {
             authReq = req.clone({
                 headers: req.headers.set('Authorization', this.httpService.getToken())
             });

@@ -25,7 +25,16 @@
         </svg>
       </i>传资源
     </div>
-    <nz-avatar nzIcon="user" nzSrc="{{avatar}}"></nz-avatar>
+    
+    <nz-dropdown [nzPlacement]="'bottomCenter'">
+      <nz-avatar nzIcon="user" class="avatar" nzSrc="{{avatar}}" nz-dropdown></nz-avatar>
+      <ul >
+        <li class="header-item" (click)="logout()">
+          <img src="../../assets/images/logout.png" style="height: 16px; width: 16px; margin-right: 5px;"><span class="logout">退出</span>
+        </li>
+      </ul>
+    </nz-dropdown>
+    
   </div>
   <div class="header-side"></div>
 </div>

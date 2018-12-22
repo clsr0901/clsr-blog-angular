@@ -1,29 +1,29 @@
 <div>
   <div class="icon">
-    <nz-avatar nzSize="128" nzIcon="user" class="avatar"></nz-avatar>
+    <nz-avatar nzIcon="user"  class="avatar" nzSrc="{{user.avatar}}"></nz-avatar>
   </div>
-  <div class="name">{{name}}</div>
+  <div class="name">{{user.username}}</div>
   <div class="line"></div>
-  <div class="info" nz-row>
-    <div nz-col nzSpan="6" class="data-col">
+  <div class="info" >
+    <div class="data-col">
       <div class="data">
         <div>原创</div>
         <div class="data-conent">125</div>
       </div>
     </div>
-    <div nz-col nzSpan="6" class="data-col">
+    <div  class="data-col">
       <div class="data">
         <div>粉丝</div>
         <div class="data-conent">125</div>
       </div>
     </div>
-    <div nz-col nzSpan="6" class="data-col">
+    <div class="data-col">
       <div class="data">
         <div>喜欢</div>
         <div class="data-conent">125</div>
       </div>
     </div>
-    <div nz-col nzSpan="6" class="data-col">
+    <div  class="data-col">
       <div class="data">
         <div>评论</div>
         <div class="data-conent">125</div>
@@ -31,12 +31,13 @@
     </div>
   </div>
   <div class="line"></div>
-  <div class="action" nz-row>
-    <div nz-col nzSpan="12" class="button">
+  <div class="action" >
+      <textarea class="message" rows="6" nz-input [(ngModel)]="message.message" placeholder="给他留言..."></textarea>
+    <!-- <div nz-col nzSpan="12" class="button">
       <div class="attent">关注</div>
-    </div>
-    <div nz-col nzSpan="12" class="button">
-      <div class="attent">留言</div>
+    </div> -->
+    <div  class="button" *ngIf="message.message">
+      <div class="attent" (click)="leaveMessage()">给他留言</div>
     </div>
   </div>
 </div>

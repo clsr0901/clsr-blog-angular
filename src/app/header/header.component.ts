@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpRequestService } from '../http-request.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
   @Output('header') write = new EventEmitter<any>();
 
   search: string;
-  constructor(private route: Router) { }
+  constructor(private route: Router, private httpRequestService: HttpRequestService) { }
 
   ngOnInit() {
   }
@@ -30,6 +31,11 @@ export class HeaderComponent implements OnInit {
   toHome(){
     console.log("home")
     this.route.navigateByUrl("/home");
+  }
+
+  logout(){
+    this.httpRequestService.setToken("");
+    this.route.navigateByUrl('/login');
   }
 
 }
