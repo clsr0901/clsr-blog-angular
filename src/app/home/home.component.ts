@@ -6,6 +6,7 @@ import { from } from 'rxjs';
 import { HttpRequestService } from '../http-request.service';
 import { EventService } from '../service/event.service';
 import { Blog } from '../entity/Blog';
+import { MessageComponent } from '../message/message.component';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +16,11 @@ import { Blog } from '../entity/Blog';
 export class HomeComponent implements OnInit {
   @ViewChild('header')
   header: HeaderComponent;
+  @ViewChild('message')
+  message: MessageComponent;
   userId: number;
   avatar: string;
-
+  showMessage: boolean = true;
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private httpRequestService: HttpRequestService,
     private eventService: EventService) {
   }
@@ -25,7 +28,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.userId = this.httpRequestService.getUser().id;
     this.avatar = this.httpRequestService.getUser().avatar;
-    console.log("home", this.avatar)
     console.log(this.activatedRoute.snapshot.paramMap, 'home')
     this.activatedRoute.queryParams.subscribe(params => {
       console.log("home", params);
@@ -34,22 +36,32 @@ export class HomeComponent implements OnInit {
 
     // 接收发射过来的数据
     this.eventService.eventEmit.subscribe((obj: any) => {
-      if(obj == null){
+      if (obj == null) {
         this.userId = this.httpRequestService.getUser().id;
-      }else{
+        setTimeout(() => {
+          this.showMessage = true;
+        });
+      } else {
         this.userId = obj.user.id;
+        setTimeout(() => {
+          this.showMessage = false;
+        });
+
       }
-        
+
     });
   }
 
-  headerHeaderClick(event) {
+  handleHeaderListener(event) {
     console.log(event)
     if (event == 0) {
       this.router.navigateByUrl("/edit/0");
     }
   }
 
-
+  handleUserInfoListener(event) {
+    console.log("home message", this.message, this.header)
+    this.message.getMessages();
+  }
 
 }

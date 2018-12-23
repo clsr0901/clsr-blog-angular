@@ -25,6 +25,7 @@ import { EventService } from './service/event.service';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import {SimpleReuseStrategy} from './strategy/simple-reuse-strategy';
 import { RouteReuseStrategy } from '@angular/router';
+import { MessageComponent } from './message/message.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -39,6 +40,7 @@ registerLocaleData(zh);
     BlogCardComponent,
     StringSubPipePipe,
     BlogDetailComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,

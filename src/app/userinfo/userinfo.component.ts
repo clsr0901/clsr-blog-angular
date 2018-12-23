@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { HttpRequestService } from '../http-request.service';
 import { User } from '../entity/User';
 import { Message } from '../entity/Message';
@@ -11,6 +11,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 })
 export class UserinfoComponent implements OnInit {
   private _userId: number;
+  @Output('user-info') messageEmitter = new EventEmitter<any>();
   /**
      * 返回父组件变化后的值
      */
@@ -52,6 +53,7 @@ export class UserinfoComponent implements OnInit {
       this.httpRequestService.httpPut("/message/put/", this.message).subscribe(res => {
         this.message.message = "";
         this.toast.success("留言成功");
+        this.messageEmitter.emit(this.message);
     }, err=>{
 
     });

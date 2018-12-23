@@ -6,7 +6,7 @@
       <img class="card-footer-left card-avatar" src="{{blog.user.avatar}}"/>
       <span class="card-footer-left card-name">{{blog.user.username}}</span>
       <span class="card-footer-left card-point"></span>
-      <span class="card-footer-left card-footer-left">{{blog.updatetime}}</span>
+      <span class="card-footer-left card-footer-left">{{blog.updatetime | stringSubPipe:19}}</span>
     </div>
     <div nz-col nzSpan="8" >
         <span class="card-footer-right"><span class="card-num"></span>评论</span>

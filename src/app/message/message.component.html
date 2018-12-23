@@ -1,0 +1,12 @@
+<div class="message">
+  <div *ngFor="let message of messages" class="message-item">
+    <div class="message-title">
+      <span class="source-user">{{message.sourceUserName}}</span>
+      <span style="font-style:italic; font-size: 14px; color: #888;">给您留言:</span>
+    </div>
+    <div class="line"></div>
+    <div class="message-content">{{message.message}}</div>
+    <div class="line"></div>
+    <div class="message-time">{{message.createtime | stringSubPipe:19}}</div>
+  </div>
+</div>

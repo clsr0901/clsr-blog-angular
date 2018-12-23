@@ -1,18 +1,20 @@
 <nz-layout class="home-layout">
   <div class="home-header">
-    <app-header #header [avatar]="avatar" (header)="headerHeaderClick($event)"></app-header>
+    <app-header #header [avatar]="avatar" (header)="handleHeaderListener($event)"></app-header>
   </div>
   <div class="home-content">
     <div class="content-left">
       <div class="userinfo-warpper">
-        <app-userinfo class="userinfo" [(userId)]="userId"></app-userinfo>
+        <app-userinfo class="userinfo" [(userId)]="userId" (user-info)="handleUserInfoListener($enent)"></app-userinfo>
       </div>
     </div>
     <div class="content-middle" #divTarget >
       <router-outlet></router-outlet>
       <nz-back-top [nzTarget]="divTarget"></nz-back-top>
     </div>
-    <div class="content-right">col-8</div>
+    <div class="content-right">
+      <app-message #message  *ngIf="showMessage" (message)="handleMessageLisenter($event)"></app-message>
+    </div>
   </div>
   <div class="home-footer"><a href="https://github.com/chenls520" target="_blank"><span style=" color: #CA0C16; font-style:italic;">
         网站源码,欢迎 star</span></a></div>
