@@ -8,8 +8,8 @@ import { User } from './entity/User';
 })
 export class HttpRequestService {
 
-  baseUrl = 'http://localhost:8080';
-  // baseUrl = '';
+  // baseUrl = 'http://localhost:8080';
+  baseUrl = '';
 
 
   setToken(token: string): void {

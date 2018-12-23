@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('message')
   message: MessageComponent;
   userId: number;
+  blogId: number;
   avatar: string;
   showMessage: boolean = true;
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private httpRequestService: HttpRequestService,
@@ -37,13 +38,15 @@ export class HomeComponent implements OnInit {
     // 接收发射过来的数据
     this.eventService.eventEmit.subscribe((obj: any) => {
       if (obj == null) {
-        this.userId = this.httpRequestService.getUser().id;
         setTimeout(() => {
+          this.userId = this.httpRequestService.getUser().id;
+          this.blogId = 0;
           this.showMessage = true;
         });
       } else {
-        this.userId = obj.user.id;
         setTimeout(() => {
+          this.blogId = obj.id;
+          this.userId = obj.user.id;
           this.showMessage = false;
         });
 
@@ -52,15 +55,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  handleHeaderListener(event) {
+  handleHeaderListener(event: any) {
     console.log(event)
     if (event == 0) {
       this.router.navigateByUrl("/edit/0");
     }
   }
 
-  handleUserInfoListener(event) {
-    console.log("home message", this.message, this.header)
+  handleUserInfoListener(event: any) {
     this.message.getMessages();
   }
 

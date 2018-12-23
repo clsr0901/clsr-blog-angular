@@ -2,11 +2,14 @@
   <div *ngFor="let message of messages" class="message-item">
     <div class="message-title">
       <span class="source-user">{{message.sourceUserName}}</span>
-      <span style="font-style:italic; font-size: 14px; color: #888;">给您留言:</span>
+      <span style="font-style:italic; font-size: 14px; color: #888;">给您留言说 :</span>
     </div>
     <div class="line"></div>
     <div class="message-content">{{message.message}}</div>
     <div class="line"></div>
-    <div class="message-time">{{message.createtime | stringSubPipe:19}}</div>
+    <div class="message-time">
+      {{message.createtime | stringSubPipe:19}}
+      <i nz-icon [type]="'delete'" class="message-delete" nzTitle="删除" nzPlacement="top" nzTrigger="hover" nz-tooltip (click)="deleteMessage(message)"></i>
+    </div>
   </div>
 </div>

@@ -26,6 +26,7 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import {SimpleReuseStrategy} from './strategy/simple-reuse-strategy';
 import { RouteReuseStrategy } from '@angular/router';
 import { MessageComponent } from './message/message.component';
+import { CommentComponent } from './comment/comment.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -41,6 +42,7 @@ registerLocaleData(zh);
     StringSubPipePipe,
     BlogDetailComponent,
     MessageComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

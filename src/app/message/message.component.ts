@@ -20,9 +20,19 @@ export class MessageComponent implements OnInit {
 
   }
 
-  public getMessages(){
+  public getMessages() {
     this.httpRequestService.httpGet("/message/get/" + this.user.id).subscribe(res => {
       this.messages = res.data;
+    }, error => {
+
+    })
+  }
+
+  deleteMessage(message: Message) {
+    this.httpRequestService.httpDelete("/message/delete/" + message.id).subscribe(res => {
+      let index = this.messages.indexOf(message);
+      if (index != -1)
+        this.messages.splice(index, 1);
     }, error => {
 
     })

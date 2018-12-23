@@ -1,4 +1,9 @@
-<img class="background-img" src="http://img.hb.aicdn.com/94b00c189a195c1fa59916728d7a040f0fea0aa0399ef-rbaTJE_fw658"/>
+<div class="background-img" style="background:url('../../assets/images/liushurui.jpg');"> 
+  <nz-carousel nzAutoPlay class="carousel" [nzDots]='false'>
+      <div nz-carousel-content *ngFor="let index of array"><h1 class="shengdan">{{index}}</h1></div>
+    </nz-carousel>
+</div>
+
 <div class="container">
   <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
     <nz-form-item>
@@ -34,3 +39,5 @@
   <ng-template #prefixLock><i nz-icon type="lock"></i></ng-template>
 
 </div>
+
+<!-- http://img.hb.aicdn.com/94b00c189a195c1fa59916728d7a040f0fea0aa0399ef-rbaTJE_fw658 -->

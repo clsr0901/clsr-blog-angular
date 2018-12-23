@@ -1,0 +1,33 @@
+<div class="comment-warpper">
+  <div class="comment-content">
+    <div *ngFor="let c of comments">
+      <div class="comment-title">
+        <span class="source-user">{{c.sourceUserName}}</span>
+        <span style="font-style:italic; font-size: 14px; color: #888;" *ngIf="c.action == 0">评论了您的博客 :</span>
+        <span style="font-style:italic; font-size: 14px; color: #888;" *ngIf="c.action == 1">回复
+          <span class="dest-user">{{c.destUserName}}</span>
+          <span style="font-style:italic; font-size: 14px; color: #888;">说 ：</span>
+        </span>
+      </div>
+      <div class="line"></div>
+      <div class="comment-message">{{c.content}}</div>
+      <div class="line"></div>
+      <div class="comment-time">
+        {{c.createtime | stringSubPipe:19}}
+        <i nz-icon [type]="'mail'" class="comment-item-reply" nzTitle="回复" nzPlacement="top" nzTrigger="hover"
+          nz-tooltip (click)="c.reply = !c.reply"></i>
+        <i nz-icon [type]="'delete'" class="comment-item-delete" nzTitle="删除" nzPlacement="top" nzTrigger="hover"
+          nz-tooltip (click)="deleteComment(c)"></i>
+      </div>
+      <div *ngIf="c.reply">
+        <textarea class="content" rows="6" nz-input [(ngModel)]="c.replyContent" placeholder="回复内容..."></textarea>
+        <button class="submit" nz-button nzType="primary" nzSize="large" (click)="submitReply(c)">回复</button>
+      </div>
+    </div>
+  </div>
+  <div class="line"></div>
+  <div class="comment-action">
+    <textarea class="content" rows="6" nz-input [(ngModel)]="comment.content" placeholder="添加评论..."></textarea>
+    <button class="submit" nz-button nzType="primary" nzSize="large" (click)="submitComment()">评论</button>
+  </div>
+</div>

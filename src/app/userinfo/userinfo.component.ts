@@ -3,6 +3,7 @@ import { HttpRequestService } from '../http-request.service';
 import { User } from '../entity/User';
 import { Message } from '../entity/Message';
 import { NzMessageService } from 'ng-zorro-antd';
+import { UserVO } from '../entity/UserVO';
 
 @Component({
   selector: 'app-userinfo',
@@ -28,13 +29,13 @@ export class UserinfoComponent implements OnInit {
         this._userId = value;
         this.getUserInfo();
     }
-  user: User;
+  user: UserVO;
   message: Message;
   constructor(private httpRequestService: HttpRequestService, private toast: NzMessageService,) { }
 
   ngOnInit() {
     this.message = new Message();
-    this.user = new User();
+    this.user = new UserVO();
     this.getUserInfo();
   }
 

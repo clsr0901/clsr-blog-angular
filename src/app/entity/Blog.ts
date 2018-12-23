@@ -13,6 +13,7 @@ export class Blog {
     public hightlight: boolean;
     public createtime: string;
     public updatetime: string;
+    public comments: number;
     public user: User;
 
     constructor(

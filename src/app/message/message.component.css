@@ -11,6 +11,12 @@
     background: rgba(238, 238, 238, 0.5);
 }
 
+.message-delete {
+    color: #CA0C16;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
 .source-user {
     color: #CA0C16;
     font-size: 18px;
@@ -28,6 +34,7 @@
 .message-time {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     height: 26px;
     line-height: 26px;
     font-size: 12px;

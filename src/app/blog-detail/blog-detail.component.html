@@ -1,17 +1,19 @@
 <div style="padding: 10px;">
-  <div class="detail-title" nz-row>
-    <div nz-col nzSpan="2">
-      <i nz-icon [type]="'left-square'" class="back" (click)="back()"></i>
-    </div>
-    <div nz-col nzSpan="22" style="height:100%;">
+  <div class="detail-title">
+    <i nz-icon [type]="'left-square'" class="back" (click)="back()"></i>
+    <div class="detail-title-right">
       <div class="detail-title-content">{{blog.title}}</div>
       <div class="detail-title-time">
-        <span style="margin-right:14px; font-size:16px;">{{blog.updatetime | stringSubPipe:19}}</span>
-        <span style="margin-right:5px; font-size:16px;">阅读数:</span>
-        <span style="margin-right:14px; font-size:16px;">{{blog.view}}</span>
+        <div>
+          <span class="detail-title-right-bottom">{{blog.updatetime | stringSubPipe:19}}</span>
+          <span class="detail-title-right-bottom">阅读数: {{blog.view}}</span>
+        </div>
+        <div style="flex-grow: 1;"></div>
         <div class="detail-operater" *ngIf="!blog.user ? false:user.id == blog.user.id">
-          <div class="edit" (click)="edit(blog.id)" nz-icon [type]="'edit'"  nzTitle="编辑" nzPlacement="top" nzTrigger="hover" nz-tooltip nzOverlayClassName="edit"></div>
-          <div class="delete" (click)="delete(blog.id)" nz-icon [type]="'delete'"  nzTitle="删除" nzPlacement="top" nzTrigger="hover" nz-tooltip nzOverlayClassName="delete"></div>
+          <div class="edit" (click)="edit(blog.id)" nz-icon [type]="'edit'" nzTitle="编辑" nzPlacement="top" nzTrigger="hover"
+            nz-tooltip nzOverlayClassName="edit"></div>
+          <div class="delete" (click)="delete(blog.id)" nz-icon [type]="'delete'" nzTitle="删除" nzPlacement="top"
+            nzTrigger="hover" nz-tooltip nzOverlayClassName="delete"></div>
         </div>
       </div>
     </div>

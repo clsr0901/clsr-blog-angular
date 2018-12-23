@@ -17,7 +17,7 @@ import { catchError } from 'rxjs/operators';
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
   private user: User = new User();
-
+  array: string[];
   submitForm(): void {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.array = ["刘书瑞同学","圣诞快乐","刘书瑞同学", "我爱你","刘书瑞同学", "你是这个地球上最好看的人","刘书瑞同学", "同样都是九年义务教育", "为什么你如此优秀"];
     this.httpRequestService.setToken("");
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],

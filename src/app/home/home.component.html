@@ -5,7 +5,7 @@
   <div class="home-content">
     <div class="content-left">
       <div class="userinfo-warpper">
-        <app-userinfo class="userinfo" [(userId)]="userId" (user-info)="handleUserInfoListener($enent)"></app-userinfo>
+        <app-userinfo class="userinfo" [(userId)]="userId" (user-info)="handleUserInfoListener($event)"></app-userinfo>
       </div>
     </div>
     <div class="content-middle" #divTarget >
@@ -14,6 +14,7 @@
     </div>
     <div class="content-right">
       <app-message #message  *ngIf="showMessage" (message)="handleMessageLisenter($event)"></app-message>
+      <app-comment #comment  *ngIf="!showMessage" [(blogId)]="blogId"></app-comment>
     </div>
   </div>
   <div class="home-footer"><a href="https://github.com/chenls520" target="_blank"><span style=" color: #CA0C16; font-style:italic;">

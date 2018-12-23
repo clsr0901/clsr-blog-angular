@@ -68,6 +68,28 @@
     
 }
 
+@media only screen and (max-width: 800px) {
+    .content-right {
+        display: none;
+        
+    }
+    .content-left{
+        display: none;
+    }
+
+    .content-middle {
+        background: #fff;
+        height: 100%;
+        background-color: #fff;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100%;
+        flex-grow: 1;
+    }
+}
+
 .content-right::-webkit-scrollbar {
     display: none;
 }

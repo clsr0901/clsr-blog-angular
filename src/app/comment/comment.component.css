@@ -1,0 +1,81 @@
+.comment-warpper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.comment-content::-webkit-scrollbar {
+    display: none;
+}
+
+.comment-content {
+    flex: 3;
+    padding: 5px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.comment-title {
+    height: 40px;
+    line-height: 40px;
+    background: rgba(238, 238, 238, 0.5);
+}
+
+.comment-message{
+    font-size: 14px;
+    text-indent:28px;
+    padding: 5px;
+}
+
+.comment-time {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+}
+
+.comment-item-delete {
+    color: #CA0C16;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.comment-item-reply {
+    color: #3399EA;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.source-user {
+    color: #CA0C16;
+    font-size: 18px;
+    margin-right: 5px;
+    margin-left: 5px;
+    
+}
+
+.dest-user{
+    color: #3399EA;
+    font-size: 18px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.comment-action {
+    padding: 5px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+.submit {
+    margin-top: 2px;
+    height: 30px;
+    line-height: 30px;
+    text-align:center;  
+    width: 100%;
+}
