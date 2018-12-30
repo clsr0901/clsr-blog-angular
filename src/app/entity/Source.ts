@@ -8,6 +8,7 @@ export class Source {
     public userid: number;
     public length: number;
     public mime: string;
+    public type: number;
 
     constructor() { }
 }

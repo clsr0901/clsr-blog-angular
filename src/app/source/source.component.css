@@ -12,3 +12,28 @@
     margin-top: 8px;
     color: #666;
   }
+
+.source-item {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+}
+
+.source-text {
+ color: #456;
+}
+
+.source-audio {
+  color: #CA0C16;
+}
+
+.source-video {
+  color: #3399EA;
+}
+
+.source-zip {
+  color: #e8f808;
+}

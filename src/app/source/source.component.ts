@@ -14,6 +14,7 @@ import { Source } from '../entity/Source';
 export class SourceComponent implements OnInit {
 
   fileList: Source[] = [];
+  sources: Source[] = [];
   previewImage = '';
   previewVisible = false;
 
@@ -25,14 +26,16 @@ export class SourceComponent implements OnInit {
 
   getData() {
     this.httpRequestService.httpGet("/source/get/" + this.httpRequestService.getUser().id).subscribe(res => {
-      this.fileList = res.data;
+      // this.fileList = res.data;
+      this.sources = res.data;
     }, err => {
       this.msg.error(err.msg);
     })
   }
 
-  handlePreview = (file: UploadFile) => {
-    this.previewImage = file.url || file.thumbUrl;
+  handlePreview = (file: Source) => {
+    console.log(file, 'preview')
+    this.previewImage = file.url;
     this.previewVisible = true;
   }
 
@@ -90,8 +93,12 @@ export class SourceComponent implements OnInit {
         // 处理成功
         this.msg.success("上传成功");
         // 处理成功
-        // item.onSuccess({}, item.file, event);
-        this.getData();
+        item.onSuccess({}, item.file, event);
+        this.sources.push(res.data);
+        this.fileList = [];
+        // this.fileList.pop();
+        // this.fileList.push(res.data);
+        // this.getData();
       }, err => {
         // 处理失败
         this.msg.error(err.msg);
@@ -119,12 +126,20 @@ export class SourceComponent implements OnInit {
   }
 
   remove = (file: Source) => {
-    // this.httpRequestService.httpDelete("/source/delete/" + file.uid).subscribe(res => {
-    //   this.getData();
-    // }, err => {
-    //   this.msg.error(err.msg);
-    // })
-    this.fileList.pop();
+    this.httpRequestService.httpDelete("/source/delete/" + file.uid).subscribe(res => {
+      let index = this.sources.indexOf(file);
+      if (index != -1) {
+        let result: Source[] = [];
+        this.sources.forEach(e => {
+          if (e != file) {
+            result.push(e);
+          }
+        })
+        this.sources = result;
+      }
+    }, err => {
+      this.msg.error(err.msg);
+    })
   }
 }
 
