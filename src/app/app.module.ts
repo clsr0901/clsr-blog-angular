@@ -27,6 +27,7 @@ import {SimpleReuseStrategy} from './strategy/simple-reuse-strategy';
 import { RouteReuseStrategy } from '@angular/router';
 import { MessageComponent } from './message/message.component';
 import { CommentComponent } from './comment/comment.component';
+import { SourceComponent } from './source/source.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -43,6 +44,7 @@ registerLocaleData(zh);
     BlogDetailComponent,
     MessageComponent,
     CommentComponent,
+    SourceComponent,
   ],
   imports: [
     BrowserModule,

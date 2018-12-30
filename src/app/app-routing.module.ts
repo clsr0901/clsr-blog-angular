@@ -6,6 +6,7 @@ import { EditComponent } from './edit/edit.component';
 import { HomeComponent } from './home/home.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { SourceComponent } from './source/source.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
     ]
   },
   { path: 'edit/:id', component: EditComponent },
+  { path: 'source', component: SourceComponent },
 ]
 @NgModule({
   exports: [RouterModule],

@@ -55,13 +55,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  handleHeaderListener(event: any) {
-    console.log(event)
-    if (event == 0) {
-      this.router.navigateByUrl("/edit/0");
-    }
-  }
-
   handleUserInfoListener(event: any) {
     this.message.getMessages();
   }

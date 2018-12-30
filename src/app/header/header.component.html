@@ -5,10 +5,10 @@
     <img class="logo" src="../../assets/images/logo.png" (click)="toHome()" />
     <div class="heder-search">
       <nz-input-group [nzSuffix]="suffixIconSearch">
-        <input type="text" nz-input placeholder="搜全站" [(ngModel)]="search">
+        <input type="text" nz-input placeholder="搜全站" [(ngModel)]="search" (keyup)="keyUpSearch($event)">
       </nz-input-group>
       <ng-template #suffixIconSearch>
-        <i nz-icon type="search" (click)="clickWrite(search)"></i>
+        <i nz-icon type="search" (click)="handleSearch()"></i>
       </ng-template>
     </div>
     <div class="write" (click)="clickWrite(0)">

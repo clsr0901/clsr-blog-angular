@@ -9,11 +9,11 @@ import { HttpRequestService } from '../http-request.service';
 })
 export class HeaderComponent implements OnInit {
   @Input() avatar: string;
-  
-  @Output('header') write = new EventEmitter<any>();
+
+  // @Output('header') write = new EventEmitter<any>();
 
   search: string;
-  constructor(private route: Router, private httpRequestService: HttpRequestService) { }
+  constructor(private router: Router, private httpRequestService: HttpRequestService) { }
 
   ngOnInit() {
   }
@@ -24,18 +24,32 @@ export class HeaderComponent implements OnInit {
 
   //type 0写博客 1 资源管理
   clickWrite(type) {
-    console.log("child clickWrite")
-    this.write.emit(type);
+    // this.write.emit(type);
+    if(type == 0){
+      this.router.navigateByUrl("/edit/0");
+    }else if(type == 1){
+      this.router.navigateByUrl("/source");
+    }
   }
 
-  toHome(){
+  toHome() {
     console.log("home")
-    this.route.navigateByUrl("/home");
+    this.router.navigateByUrl("/home");
   }
 
-  logout(){
+  logout() {
     this.httpRequestService.setToken("");
-    this.route.navigateByUrl('/login');
+    this.router.navigateByUrl('/login');
+  }
+
+  handleSearch() {
+    this.router.navigate(['/home/list'], { queryParams: { 'search': this.search } });
+  }
+
+  keyUpSearch(event) {
+    if (event.key == "Enter") {
+      this.handleSearch();
+    }
   }
 
 }

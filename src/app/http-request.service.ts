@@ -8,8 +8,8 @@ import { User } from './entity/User';
 })
 export class HttpRequestService {
 
-  // baseUrl = 'http://localhost:8080';
-  baseUrl = '';
+  baseUrl = 'http://localhost:8080';
+  // baseUrl = '';
 
 
   setToken(token: string): void {
@@ -33,6 +33,14 @@ export class HttpRequestService {
     return options;
   }
 
+  setFileHeaders(){
+    const headers = new HttpHeaders().set('Accept', 'application/json');
+    let options = {
+      headers: headers
+    }
+    return options;
+  }
+
   constructor(private httpClient: HttpClient) { }
 
   httpPut(reqUrl: string, repBody): Observable<any> {
@@ -49,5 +57,9 @@ export class HttpRequestService {
 
   httpGet(reqUrl: string): Observable<any> {
     return this.httpClient.get(this.baseUrl + reqUrl, this.setHeaders());
+  }
+
+  httpFormDataPost(reqUrl: string, repBody): Observable<any> {
+    return this.httpClient.post(this.baseUrl + reqUrl, repBody, this.setFileHeaders());
   }
 }
