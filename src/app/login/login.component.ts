@@ -9,6 +9,7 @@ import {
 import {User} from "../entity/User";
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
+// import '../../assets/js/index.js';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -45,7 +46,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.array = ["刘书瑞同学","圣诞快乐","刘书瑞同学", "我爱你","刘书瑞同学", "你是这个地球上最好看的人","刘书瑞同学", "同样都是九年义务教育", "为什么你如此优秀"];
     this.httpRequestService.setToken("");
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],

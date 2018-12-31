@@ -2,15 +2,15 @@
   <div class="ng-tns-c3-0 ant-upload-list ant-upload-list-picture-card ng-star-inserted" *ngFor="let source of sources">
     <div class="ant-upload-list-item ant-upload-list-item-done">
       <div class="ant-upload-list-item-info" nzTitle="{{source.name}}" nzPlacement="bottom" nz-tooltip>
-          <i nz-icon type="file-text" theme="outline" *ngIf="source.type == 0" class="source-item source-text" ></i>
+          <i *ngIf="source.type == 0" class="source-item source-text fa fa-file-text-o" ></i>
         <span class="ng-tns-c3-0 ng-star-inserted" *ngIf="source.type == 1">
           <i class="ant-upload-list-item-thumbnail ng-tns-c3-0 ng-star-inserted">
             <img class="ng-tns-c3-0" src="{{source.url}}">
           </i>
         </span>
-        <i nz-icon type="customer-service" theme="outline" *ngIf="source.type == 2" class="source-item source-audio"></i>
-        <i nz-icon [type]="'video-camera'" theme="outline" *ngIf="source.type == 3" class="source-item source-video"></i>
-        <i nz-icon type="hdd" theme="outline" *ngIf="source.type == 4" class="source-item source-zip"></i>
+        <i *ngIf="source.type == 2" class="source-item source-audio fa fa-file-audio-o"></i>
+        <i *ngIf="source.type == 3" class="source-item source-video fa fa-file-video-o"></i>
+        <i *ngIf="source.type == 4" class="source-item source-zip fa fa-file-zip-o"></i>
       </div>
       <span class="ant-upload-list-item-actions ng-tns-c3-0 ng-star-inserted">
         <a rel="noopener noreferrer" target="_blank" class="ng-tns-c3-0 ng-star-inserted" ng-reflect-ng-style="false"

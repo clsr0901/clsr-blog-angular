@@ -1,37 +1,68 @@
+@import '~font-awesome/css/font-awesome.css';
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.eidt-tool {
+    height: 36px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.tool-item {
+    padding: 5px;
+    font-size: 26px;
+}
+.tool-item:hover {
+    font-size: 36px;
+    color: #3399EA;
+}
+
+.tool-item-select {
+    font-size: 36px;
+    color: #CA0C16;
+}
+
+.avatar {
+    height: 36px;
+    line-height: 36px;
+    width: 36px;
+}
 .parentWrap{   
     overflow: hidden;  
     height: 100%; 
+    display: flex;
 }   
-.parent{   
-    overflow: hidden;   
-    height: 100%; 
-}   
-.child{ 
-    position:relative; 
-    float: left;   
+
+.show{ 
     height: 100%;   
-    width: 50%;   
     padding: 5px;   
+    width: 100%;
     display: block;
     margin: 0, auto;
+    flex: 1;
+    display: flex;
 } 
-.fullChild{
-    float: left;   
-    height: 100%;   
-    width: 100%;   
-    padding: 5px;   
-    display: block;
-    margin: 0, auto;
+
+.none {
+    display: none;
 }
 .input { 
     height: 100%;   
-    width: 99%; 
+    width: 100%; 
 }
 .markdownParent {
     position:relative;
     height: 100%;
-    width: 99%; 
-    border: 1px solid #eee;
+    width: 100%; 
+    border: 1px solid #CA0C16;
     border-radius: 5px;
     overflow: auto;
 }
@@ -39,18 +70,6 @@
     height: 100%;
     width: 100%; 
 }
-.markdown_control {
-    position:absolute;
-    right:5px;
-    top: 5px;
-}
-.save {
-    position:absolute;
-    right:20px;
-    top: 10px;
-}
-
-
   :host ::ng-deep .long-div-inner {
     height: 1500px;
   }
@@ -61,4 +80,20 @@
 
   :host ::ng-deep strong {
     color: rgba(64, 64, 64, 0.6);
+  }
+
+.source-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.source-item {
+    height: 135px;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

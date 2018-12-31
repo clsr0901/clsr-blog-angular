@@ -1,24 +1,50 @@
-
-<div class="parentWrap">
-  <div class="parent" >
-    <div  [class.child]="editable === true" [class.fullChild]="editable === false">
+<div class="wrapper">
+  <div class="eidt-tool">
+    <i class="fa fa-eye tool-item" [class.tool-item-select]="select === 1" (click)="review()" nz-tooltip nzTitle="预览"
+      nzPlacement="bottom"></i>
+    <i class="fa fa-columns tool-item" [class.tool-item-select]="select === 2" (click)="columns()" nz-tooltip nzTitle="预览编辑"
+      nzPlacement="bottom"></i>
+    <i class="fa fa-edit tool-item" [class.tool-item-select]="select === 3" (click)="edit()" nz-tooltip nzTitle="编辑"
+      nzPlacement="bottom"></i>
+    <i class="fa fa-files-o tool-item" [class.tool-item-select]="select === 4" (click)="fileList()" nz-tooltip nzTitle="资源列表"
+      nzPlacement="bottom"></i>
+    <i class="fa fa-save tool-item" [class.tool-item-select]="select === 5" (click)="save()" nz-tooltip nzTitle="保存"
+      nzPlacement="bottom"></i>
+    <div style="flex: 1"></div>
+    <nz-avatar nzIcon="user" class="avatar" nzSrc="{{user.avatar}}"></nz-avatar>
+  </div>
+  <div class="parentWrap">
+    <div [class.show]="editType!= 2" [class.none]="editType === 2">
       <div class="markdownParent" #divTarget>
-          <markdown class="markdown" [data]="blog.content"></markdown>
-          <nz-button-group class="markdown_control">
-              <button nz-button nzType="primary" (click)="edit()"><i nz-icon type="left"></i>编辑</button>
-              <button nz-button nzType="primary" (click)="review()">预览<i nz-icon type="right"></i></button>
-            </nz-button-group>
-            <nz-back-top [nzTarget]="divTarget"></nz-back-top>
+        <markdown class="markdown" [data]="blog.content"></markdown>
+        <nz-back-top [nzTarget]="divTarget"></nz-back-top>
       </div>
     </div>
-    <div class="child" *ngIf="editable">
+    <div class="child" [class.show]="editType != 1" [class.none]="editType === 1">
       <textarea class="input" nz-input [(ngModel)]="blog.content" placeholder="请编辑博客内容,遵循MarkDown语法" #divTarget>
-      </textarea>
-      <button nz-button nzType="primary" (click)="save()" class="save">保存</button>
+            </textarea>
       <nz-back-top [nzTarget]="divTarget"></nz-back-top>
     </div>
   </div>
-  <nz-modal nzWrapClassName="vertical-center-modal" [(nzVisible)]="isVisibleMiddle" nzTitle="请输入博客标题" (nzOnCancel)="handleCancelMiddle()" (nzOnOk)="handleOkMiddle()">
-      <textarea nz-input [(ngModel)]="blog.title" placeholder="请输入标题" nzAutosize></textarea>
-    </nz-modal>
+  <nz-modal nzWrapClassName="vertical-center-modal" [(nzVisible)]="isVisibleMiddle" nzTitle="请输入博客标题" (nzOnCancel)="handleCancelMiddle()"
+    (nzOnOk)="handleOkMiddle()">
+    <textarea nz-input [(ngModel)]="blog.title" placeholder="请输入标题" nzAutosize></textarea>
+  </nz-modal>
+  <nz-drawer [nzClosable]="true" [nzVisible]="isVisibleFileList" [nzPlacement]="'right'" nzTitle="资源列表" [nzWidth]="600"
+    (nzOnClose)="handleCancelFileList()">
+    <div class="source-wrapper">
+      <div class="source-item-wrapper" *ngFor="let source of sources">
+        <nz-card nzHoverable style="width:240px; margin-bottom: 10px;" [nzCover]="coverTemplate">
+          <nz-card-meta nzTitle="{{source.name}}}" nzDescription="{{source.url}}"></nz-card-meta>
+        </nz-card>
+        <ng-template #coverTemplate style="margin: 5px;">
+          <img class="source-item" alt="{{source.name}}" src="{{source.url}}" *ngIf="source.type == 1" />
+          <i *ngIf="source.type == 0" class="source-item source-text fa fa-file-text-o"></i>
+          <i *ngIf="source.type == 2" class="source-item source-audio fa fa-file-audio-o"></i>
+          <i *ngIf="source.type == 3" class="source-item source-video fa fa-file-video-o"></i>
+          <i *ngIf="source.type == 4" class="source-item source-zip fa fa-file-zip-o"></i>
+        </ng-template>
+      </div>
+    </div>
+  </nz-drawer>
 </div>

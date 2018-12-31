@@ -7,6 +7,7 @@ import { User } from '../entity/User';
 import { NzMessageService } from 'ng-zorro-antd';
 import { catchError } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Source } from '../entity/Source';
 
 
 @Component({
@@ -17,11 +18,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class EditComponent implements OnInit {
 
   markdown: string;
-  editable: boolean = true;
+  editType: number = 0;//0 预览编辑模式 1 预览模式 2 编辑模式
+  select: number = 0;
   isVisibleMiddle: boolean = false;
+  isVisibleFileList: boolean = false;
   blog: Blog = new Blog();
   user: User;
   id: number;
+  sources: Source[] =[];
 
   constructor(private markdownService: MarkdownService, private httpRequestService: HttpRequestService,
     private message: NzMessageService, private router: Router, private activatedRoute: ActivatedRoute) { }
@@ -37,14 +41,6 @@ export class EditComponent implements OnInit {
     }
   }
 
-  save(): void {
-    if (!this.blog.content || this.blog.content.length < 1) {
-      this.message.error("请先编辑博客内容");
-      return;
-    }
-    this.isVisibleMiddle = true;
-
-  }
   handleOkMiddle(): void {
     if (!this.blog.title || this.blog.title.length < 1) {
       this.message.error("请输入博客标题");
@@ -60,6 +56,9 @@ export class EditComponent implements OnInit {
   }
   handleCancelMiddle(): void {
     this.isVisibleMiddle = false;
+  }
+  handleCancelFileList(): void {
+    this.isVisibleFileList = false;
   }
 
   put() {
@@ -83,15 +82,34 @@ export class EditComponent implements OnInit {
   }
 
   edit(): void {
-    if (!this.editable) {
-      this.editable = true;
-    }
+    this.editType = 2;
+    this.select = 3;
+  }
+  columns(): void {
+    this.editType = 0;
+    this.select = 2;
+  }
+  review(): void {
+    this.editType = 1;
+    this.select = 1;
   }
 
-  review(): void {
-    if (this.editable) {
-      this.editable = false;
+  save(): void {
+    this.select = 5;
+    if (!this.blog.content || this.blog.content.length < 1) {
+      this.message.error("请先编辑博客内容");
+      return;
     }
+    this.isVisibleMiddle = true;
+
+  }
+
+  fileList(){
+    this.select = 4;
+    this.isVisibleFileList = true;
+    this.httpRequestService.httpGet("/source/get/" + this.httpRequestService.getUser().id).subscribe(res => {
+        this.sources = res.data;
+    }, err =>{})
   }
 
 }
