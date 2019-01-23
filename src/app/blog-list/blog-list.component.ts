@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpRequestService } from "../http-request.service";
 import { Router, ActivatedRoute } from '@angular/router';
-import { from } from 'rxjs';
 import { Blog } from '../entity/Blog';
 import { EventService } from '../service/event.service';
+import { PageQuery } from '../entity/PageQuery';
 
 @Component({
   selector: 'app-blog-list',
@@ -13,6 +13,7 @@ import { EventService } from '../service/event.service';
 export class BlogListComponent implements OnInit {
 
   blogs: Blog[];
+  pageQuery: PageQuery;
   constructor(private httpRequestService: HttpRequestService, private router: Router, private activatedRoute: ActivatedRoute,
     private evnetService: EventService) { }
 
@@ -28,7 +29,11 @@ export class BlogListComponent implements OnInit {
   }
 
   getDataByKeycode(keycode: string) {
-    this.httpRequestService.httpPost("/blog/post/keycode", keycode).subscribe(res => {
+    this.pageQuery = new PageQuery();
+    this.pageQuery.keyword = keycode;
+    this.pageQuery.pageNum = 1;
+    this.pageQuery.pageSize = -1;
+    this.httpRequestService.httpPost("/blog/post/keyword", this.pageQuery).subscribe(res => {
       this.blogs = res.data;
     }, error => {
 
