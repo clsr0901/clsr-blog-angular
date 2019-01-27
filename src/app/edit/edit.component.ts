@@ -64,7 +64,7 @@ export class EditComponent implements OnInit {
   put() {
     this.httpRequestService.httpPut("/blog/put", this.blog).subscribe(res => {
       this.isVisibleMiddle = false;
-      this.router.navigateByUrl("/home");
+      this.router.navigateByUrl("/web/home");
 
     }, err => {
 
@@ -74,7 +74,7 @@ export class EditComponent implements OnInit {
   post() {
     this.httpRequestService.httpPost("/blog/post", this.blog).subscribe(res => {
       this.isVisibleMiddle = false;
-      this.router.navigateByUrl("/home");
+      this.router.navigateByUrl("/web/home");
 
     }, err => {
 

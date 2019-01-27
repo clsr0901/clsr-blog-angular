@@ -10,17 +10,18 @@ import { SourceComponent } from './source/source.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/web/login', pathMatch: 'full' },
+  { path: 'web', redirectTo: '/web/login', pathMatch: 'full' },
+  { path: 'web/login', component: LoginComponent },
   {
-    path: 'home', component: HomeComponent, children: [
-      { path: '', redirectTo: '/home/list', pathMatch: 'full' },
+    path: 'web/home', component: HomeComponent, children: [
+      { path: '', redirectTo: '/web/home/list', pathMatch: 'full' },
       { path: 'list', component: BlogListComponent },
       { path: 'detail/:id', component: BlogDetailComponent },
     ]
   },
-  { path: 'edit/:id', component: EditComponent },
-  { path: 'source', component: SourceComponent },
+  { path: 'web/edit/:id', component: EditComponent },
+  { path: 'web/source', component: SourceComponent },
 ]
 @NgModule({
   exports: [RouterModule],

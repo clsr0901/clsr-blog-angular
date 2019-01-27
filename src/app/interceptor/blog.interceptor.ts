@@ -39,7 +39,7 @@ export class BlogInterceptor implements HttpInterceptor {
                 catchError((error, caught) => {
                     if (error.status == 417) {
                         this.httpService.setToken(null);
-                        this.router.navigateByUrl("/login");
+                        this.router.navigateByUrl("/web/login");
                     }
                     this.message.error(error.error.message);
                     return Observable.create(error);

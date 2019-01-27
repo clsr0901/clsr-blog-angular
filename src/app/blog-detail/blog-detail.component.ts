@@ -45,7 +45,7 @@ export class BlogDetailComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.router.navigateByUrl("/edit/" + id);
+    this.router.navigateByUrl("/web/edit/" + id);
   }
 
   delete() {

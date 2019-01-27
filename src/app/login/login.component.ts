@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.httpRequestService.httpPost("/login/in",this.user).subscribe(res => {
         this.httpRequestService.setUser(res.data);
         this.httpRequestService.setToken(res.token);
-        this.router.navigateByUrl("/home");
+        this.router.navigateByUrl("/web/home");
       }, err =>{
 
       });

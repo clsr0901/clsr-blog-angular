@@ -26,24 +26,24 @@ export class HeaderComponent implements OnInit {
   clickWrite(type) {
     // this.write.emit(type);
     if(type == 0){
-      this.router.navigateByUrl("/edit/0");
+      this.router.navigateByUrl("/web/edit/0");
     }else if(type == 1){
-      this.router.navigateByUrl("/source");
+      this.router.navigateByUrl("/web/source");
     }
   }
 
   toHome() {
     console.log("home")
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/web/home");
   }
 
   logout() {
     this.httpRequestService.setToken("");
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/web/login');
   }
 
   handleSearch() {
-    this.router.navigate(['/home/list'], { queryParams: { 'search': this.search } });
+    this.router.navigate(['/web/home/list'], { queryParams: { 'search': this.search } });
   }
 
   keyUpSearch(event) {

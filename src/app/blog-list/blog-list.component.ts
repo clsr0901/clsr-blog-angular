@@ -48,7 +48,7 @@ export class BlogListComponent implements OnInit {
   }
   onSelect(blog: Blog): void {
     this.evnetService.eventEmit.emit(blog);
-    this.router.navigateByUrl("/home/detail/" + blog.id);
+    this.router.navigateByUrl("/web/home/detail/" + blog.id);
   }
 
 }
